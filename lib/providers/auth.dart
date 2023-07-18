@@ -40,7 +40,7 @@ class AsyncAuthNotifier extends AsyncNotifier<bool> {
     // final res =
     try {
       await authRepository.SignIn(phoneNumber, password);
-      NavigationKey.navigationKey.currentState?.pushNamed(Routes.splash);
+      NavigationKey.navigationKey.currentState?.pushNamed(Routes.dashboard);
       state = const AsyncData(true);
     } catch (error) {
       print('@@@$error');

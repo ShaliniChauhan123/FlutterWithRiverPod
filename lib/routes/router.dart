@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/routes/names.dart';
 import 'package:flutter_application_1/screens/Login.dart';
+import 'package:flutter_application_1/screens/homeScreen/home_screen.dart';
 import 'package:flutter_application_1/screens/splash.dart';
 
 class AppRouter {
@@ -16,6 +17,9 @@ class AppRouter {
         );
         break;
 
+      case (Routes.dashboard):
+        page = const HomeScreen();
+        break;
       default:
         page = const SplashScreen();
         break;
