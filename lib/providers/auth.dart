@@ -5,6 +5,7 @@ import 'package:flutter_application_1/repositories/auth_repository.dart';
 import 'package:flutter_application_1/routes/names.dart';
 import 'package:flutter_application_1/utils/navigation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AsyncAuthNotifier extends AsyncNotifier<bool> {
   late final AuthRepository authRepository;
@@ -40,7 +41,13 @@ class AsyncAuthNotifier extends AsyncNotifier<bool> {
     // final res =
     try {
       await authRepository.SignIn(phoneNumber, password);
-      NavigationKey.navigationKey.currentState?.pushNamed(Routes.dashboard);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      if (prefs.containsKey('access_token')) {
+        NavigationKey.navigationKey.currentState?.pushNamed(Routes.dashboard);
+      } else {
+        NavigationKey.navigationKey.currentState?.pushNamed(Routes.login);
+      }
+
       state = const AsyncData(true);
     } catch (error) {
       print('@@@$error');

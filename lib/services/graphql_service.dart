@@ -30,12 +30,13 @@ class GraphQLService {
   }) async {
     // The API should not be called
     // Throw error if internet not connected
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.none) {
-      throw CustomNoNetworkException(
-        NetworkRequestFailureStatus.noInternet.toString(),
-      );
-    }
+    // var connectivityResult = await (Connectivity().checkConnectivity());
+    // if (connectivityResult == ConnectivityResult.none) {
+    //   print('graphqs');
+    //   throw CustomNoNetworkException(
+    //     NetworkRequestFailureStatus.noInternet.toString(),
+    //   );
+    // }
 
     var apiHeaders = {
       'Content-Type': 'application/json',
